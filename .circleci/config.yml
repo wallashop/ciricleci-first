@@ -1,12 +1,18 @@
 version: 2
 jobs:
-  build:
-    docker:
-      - image: node:10.13.0-slim
-    steps:
-      - checkout
-      - run: "node --version"
-      - run: echo "A first hello"
-      - run: "ls"
-      - run: "touch .cache"
-      - run: "env"
+ build:
+   machine: true
+   steps:
+     - checkout
+     # start proprietary DB using private Docker image
+     # with credentials stored in the UI
+     - run: |
+         docker login -u $DOCKER_USER -p $DOCKER_PASS
+         docker --version
+         docker run -d node:alpine
+
+     # build the application image
+     - run: docker build -t verchol/circleci:$CIRCLE_BRANCH .
+
+     # deploy the image
+     - run: docker push erchol/circleci:$CIRCLE_BRANCH
