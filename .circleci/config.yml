@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: node:alpine
+      - image: node:10.13.0-slim
     steps:
       - checkout
       - run: "node --version"
