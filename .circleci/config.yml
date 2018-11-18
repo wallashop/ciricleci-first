@@ -5,6 +5,7 @@ jobs:
       - image: node:latest
     steps:
       - checkout
+      - run: "node --version"
       - run: echo "A first hello"
       - run: "ls"
       - run: "touch .cache"
