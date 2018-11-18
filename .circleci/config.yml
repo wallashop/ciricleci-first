@@ -15,4 +15,4 @@ jobs:
      - run: docker build -t verchol/circleci:$CIRCLE_BRANCH .
 
      # deploy the image
-     - run: docker push erchol/circleci:$CIRCLE_BRANCH
+     - run: docker push verchol/circleci:$CIRCLE_BRANCH
