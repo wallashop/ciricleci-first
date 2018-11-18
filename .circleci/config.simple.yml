@@ -1,0 +1,12 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: node:10.13.0-slim
+    steps:
+      - checkout
+      - run: "node --version"
+      - run: echo "A first hello"
+      - run: "ls"
+      - run: "touch .cache"
+      - run: "env"
